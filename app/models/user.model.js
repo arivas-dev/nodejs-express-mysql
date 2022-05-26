@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 // constructor
 const User = function (book) {
     this.name = book.name;
-    this.id_rol = book.id_rol;
+    this.id_role = book.id_role;
     this.password = book.password;
     this.email = book.email;
     this.last_login = book.last_login;
@@ -49,14 +49,14 @@ User.create = (newUser, result) => {
 
 User.login = (user, result) => {
 
-    sql.query(`SELECT user.*,role.name as role FROM user inner join role on user.id_rol = role.id WHERE LOWER(email) = LOWER(${sql.escape(user.email)});`, (err, res) => {
+    sql.query(`SELECT user.*,role.name as role FROM user inner join role on user.id_role = role.id WHERE LOWER(email) = LOWER(${sql.escape(user.email)});`, (err, res) => {
         
         if (err) {
             console.log("error: ", err);
             result(err, null);
         }
         if(res.length){
-            const {name, email, id_rol,id,password,role } = res[0]
+            const {name, email, id_role,id,password,role } = res[0]
             
             
             bcrypt.compare(user.password, password, (err, hash) => {
@@ -73,7 +73,7 @@ User.login = (user, result) => {
                       
                         
 
-                        result(null, { token, name, email, id_rol,id,role });
+                        result(null, { token, name, email, id_role,id,role });
                     }else{
                         result({kind: 'bad_credentials'}, null);
                     }

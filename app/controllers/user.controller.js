@@ -61,7 +61,7 @@ exports.login = (req, res) => {
                 });
             } else {
                 res.status(500).send({
-                    message: s
+                    message: err.message
                 });
             }
         } else res.send(data);
