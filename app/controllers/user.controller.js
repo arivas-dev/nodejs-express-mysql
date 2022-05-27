@@ -14,7 +14,7 @@ exports.create = (req, res) => {
         name : req.body.name,
         dui : req.body.dui,
         telephone : req.body.telephone,
-        id_rol : req.body.id_rol,
+        id_role : req.body.id_role,
         password : req.body.password,
         email : req.body.email,
         last_login : req.body.last_login,
