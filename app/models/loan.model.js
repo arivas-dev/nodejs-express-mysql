@@ -32,7 +32,7 @@ Loan.findById = (id, result) => {
 
 
 Loan.getAll = result => {
-    sql.query(`SELECT loan.*,user.name as user,book.title FROM loan 
+    sql.query(`SELECT loan.*,user.name as user,book.title,book.description FROM loan 
     inner join user on user.id = loan.id_user
     inner join book on book.id = loan.id_book`, (err, data) => {
         if (err) {
