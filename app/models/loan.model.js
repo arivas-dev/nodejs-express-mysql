@@ -13,7 +13,9 @@ const Loan = function (loan) {
 
 //Fin by user Id
 Loan.findById = (id, result) => {
-    sql.query(`SELECT * FROM loan WHERE id_user = ${id}`, (err, res) => {
+    sql.query(`SELECT loan.*,user.name as user,book.title,book.description FROM loan 
+    inner join user on user.id = loan.id_user
+    inner join book on book.id = loan.id_book WHERE loan.id_user = ${id}`, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
