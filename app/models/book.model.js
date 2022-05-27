@@ -26,7 +26,10 @@ Book.create = (newBook, result) => {
 };
 
 Book.findById = (id, result) => {
-    sql.query(`SELECT * FROM book WHERE id = ${id}`, (err, res) => {
+    sql.query(`SELECT 
+    book.*,author.name as author,
+    (SELECT book.copies_available - COUNT(id) FROM loan where book.id = loan.id_book AND loan.returned = 0) as in_stock 
+    FROM book inner join author on author.id = book.id_author WHERE book.id = ${id}`, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
