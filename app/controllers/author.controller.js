@@ -1,4 +1,4 @@
-const Author = require('../models/genre.model');
+const Author = require('../models/author.model');
 
 
 exports.getAll = (req, res) => {
