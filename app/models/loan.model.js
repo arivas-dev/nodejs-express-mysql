@@ -15,7 +15,7 @@ const Loan = function (loan) {
 Loan.findById = (id, result) => {
     sql.query(`SELECT loan.*,user.name as user,book.title,book.description FROM loan 
     inner join user on user.id = loan.id_user
-    inner join book on book.id = loan.id_book WHERE loan.id_user = ${id}`, (err, res) => {
+    inner join book on book.id = loan.id_book WHERE loan.id_user = ${id} and returned != 1`, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -36,7 +36,7 @@ Loan.findById = (id, result) => {
 Loan.getAll = result => {
     sql.query(`SELECT loan.*,user.name as user,book.title,book.description FROM loan 
     inner join user on user.id = loan.id_user
-    inner join book on book.id = loan.id_book`, (err, data) => {
+    inner join book on book.id = loan.id_book WHERE returned != 1`, (err, data) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);
