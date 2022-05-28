@@ -17,7 +17,7 @@ module.exports = app => {
     router.get("/:id", ensureAuthenticated,loan.findByUser);
 
 
-    router.put("/:id",ensureAuthenticated, loan.returnBook);
+    router.get("/:id",ensureAuthenticated, loan.returnBook);
   
     // // Update a loan with id
     // router.put("/:id", loans.update);
