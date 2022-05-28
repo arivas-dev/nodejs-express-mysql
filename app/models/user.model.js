@@ -106,7 +106,7 @@ User.findById = (id, result) => {
 
 
 User.getAll = result => {
-    sql.query("SELECT user.name,user.email,role.name as role FROM user inner join role on role.id = user.id_role", (err, data) => {
+    sql.query("SELECT user.id,user.name,user.email,role.name as role FROM user inner join role on role.id = user.id_role", (err, data) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);
