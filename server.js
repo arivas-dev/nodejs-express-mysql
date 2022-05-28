@@ -21,10 +21,11 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to library api." });
 });
 
-require("./app/routes/tutorial.routes.js")(app);
 require("./app/routes/book.routes.js")(app);
 require("./app/routes/user.routes.js")(app);
 require("./app/routes/loan.routes.js")(app);
+require("./app/routes/genre.routes.js")(app);
+require("./app/routes/author.routes.js")(app);
 
 
 const user = require("./app/controllers/user.controller.js");
