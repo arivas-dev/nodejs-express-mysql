@@ -1,7 +1,7 @@
 const sql = require("./db.js");
 
 // constructor
-const Genre = function (author) {
+const Author = function (author) {
     this.name = author.name
 };
 
@@ -16,4 +16,4 @@ Author.getAll = result => {
         result(null, {data : data});
     });
 };
-module.exports = Genre;
+module.exports = Author;
